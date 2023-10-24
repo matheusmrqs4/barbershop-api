@@ -18,49 +18,78 @@ PHPUnit
 ### Endpoints
 ##### User Endpoints:
 ```POST /user/register - Registro de usuário```
+
 ```POST /user/login - Login de usuário```
+
 ```GET /user/me - Obter dados do usuário logado```
+
 ```POST /user/refresh - Atualizar token de usuário```
+
 ```POST /user/logout - Logout de usuário```
+
 ```GET /user/appointments - Obter os compromissos do usuário```
+
 
 ##### Barber Shop Endpoints:
 
 ```POST /barber-shop/register - Registro de estabelecimento de barbearia```
+
 ```POST /barber-shop/login - Login de estabelecimento de barbearia```
+
 ```GET /barber-shop/me - Obter dados do estabelecimento de barbearia logado```
+
 ```POST /barber-shop/refresh - Atualizar token do estabelecimento de barbearia```
+
 ```POST /barber-shop/logout - Logout do estabelecimento de barbearia```
+
 ```GET /barber-shop/dashboard - Painel de controle do estabelecimento de barbearia```
+
 
 ##### Barber Endpoints:
 
 ```POST /barber - Registra novo barbeiro```
+
 ```PUT/PATCH /barber/{barber} - Atualiza um barbeiro (requer autenticação de estabelicimento de barbearia)```
+
 ```DELETE /barber/{barber} - Exclui um barbeiro```
+
 ```GET /barber - Listar todos os barbeiros```
+
 ```GET /barber/{barber} - Obter informações de um barbeiro específico```
+
 
 ##### Service Endpoints:
 
 ```POST /service - Registra novo serviço```
+
 ```PUT/PATCH /service/{service} - Atualiza um serviço (requer autenticação de estabelicimento de barbearia)```
+
 ```DELETE /service/{service} - Exclui um serviço```
+
 ```GET /service - Listar todos os serviços```
+
 ```GET /service/{service} - Obter informações de um serviço específico```
+
 
 ##### Schedule Endpoints:
 
 ```POST /schedule - Registra novo Schedule```
+
 ```PUT/PATCH /schedule/{schedule} - Atualiza um Schedule (requer autenticação de estabelicimento de barbearia)```
+
 ```DELETE /schedule/{schedule} - Exclui um schedule```
+
 ```GET /schedule - Listar todos os horários```
+
 ```GET /schedule/{schedule} - Obter informações de um horário específico```
+
 
 ##### Appointment Endpoints:
 
 ```POST /create-appointment - Criar um novo compromisso```
+
 ```GET /show-appointment/{appointment} - Obter informações de um compromisso específico (requer autenticação de usuário)```
+
 
 ## Routes
 
