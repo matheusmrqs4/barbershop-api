@@ -86,7 +86,7 @@ PHPUnit
 
 ##### Appointment Endpoints:
 
-```POST /create-appointment - Criar um novo compromisso```
+```POST /create-appointment - Criar um novo compromisso (requer autenticação de usuário)```
 
 ```GET /show-appointment/{appointment} - Obter informações de um compromisso específico (requer autenticação de usuário)```
 
