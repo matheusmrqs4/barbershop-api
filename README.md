@@ -23,6 +23,7 @@ Atualizar dados do User logado ```PUT api/user/update-profile``` - Requer Autent
 
 Obter os Appointments do User ```GET /user/appointments``` - Requer Autenticação
 
+<hr>
 
 ##### Barber Shop Endpoints (Autenticação)
 
