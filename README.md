@@ -107,7 +107,7 @@ Criar um novo Evaluate ```POST api/appointment/{appointment}/evaluate``` - Reque
 
 ### Pré-requisitos
 * PHP 8.3
-* Laravel 11
+* Laravel 10+
 * Composer
 * Docker
 
