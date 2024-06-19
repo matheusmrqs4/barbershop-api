@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('description');
             $table->string('duration');
+            $table->decimal('price', 8, 2);
             $table->unsignedBigInteger('barbers_id');
             $table->timestamps();
 
@@ -27,6 +28,10 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::table('services', function (Blueprint $table) {
+            $table->dropForeign(['barbers_id']);
+        });
+
         Schema::dropIfExists('services');
     }
 };

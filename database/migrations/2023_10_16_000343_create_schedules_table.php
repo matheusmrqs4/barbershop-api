@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
             $table->timestamp('schedule');
             $table->unsignedBigInteger('services_id');
+            $table->unsignedBigInteger('barbers_id');
+            $table->softDeletes();
             $table->timestamps();
 
             $table->foreign('services_id')->references('id')->on('services');
+            $table->foreign('barbers_id')->references('id')->on('barbers');
         });
     }
 
@@ -28,7 +31,9 @@ return new class extends Migration
     {
         Schema::table('schedules', function (Blueprint $table) {
             $table->dropForeign(['services_id']);
-            $table->dropIfExists('services');
+            $table->dropForeign(['barbers_id']);
         });
+
+        Schema::dropIfExists('schedules');
     }
 };

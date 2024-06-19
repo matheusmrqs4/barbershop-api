@@ -1,139 +1,155 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## Laravel API REST
+API REST - Sistema de Agendamento para Barbearias.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Esta API permite que usuários criem contas como BarberShop (ADM) ou cliente. Usuários BarberShop podem personalizar sua Barbearia, criando Barbers (Barbeiros), Services (Serviços) e Schedules (Horários disponíveis). Usuários clientes tem permissão de criar um Appointment (Agendar horário) e Evaluate (Avaliar o serviço).
+
+Para a criação desta API foi usado Laravel, MySQL como Banco de Dados e Docker para rodar o projeto.
+
+## Endpoints
+
+##### User Endpoints (Autenticação)
+
+Registro de User ```POST api/user/register```
+
+Login de User ```POST api/user/login```
+
+Atualizar token de User ```POST /user/refresh``` - Requer Autenticação
+
+Logout de User ```POST /user/logout``` - Requer Autenticação
+
+Obter dados do User logado ```GET api/user/profile``` - Requer Autenticação
+
+Atualizar dados do User logado ```PUT api/user/update-profile``` - Requer Autenticação
+
+Obter os Appointments do User ```GET /user/appointments``` - Requer Autenticação
+
+
+##### Barber Shop Endpoints (Autenticação)
+
+Registro de BarberShop ```POST /barber-shop/register```
+
+Login de BarberShop ```POST /barber-shop/login```
+
+Atualizar token de BarberShop ```POST /barber-shop/refresh``` - Requer Autenticação
+
+Logout de BarberShop ```POST /barber-shop/logout``` - Requer Autenticação
+
+Obter dados de BarberShop logado ```GET /barber-shop/profile``` - Requer Autenticação
+
+Atualizar dados de BarberShop logado ```PUT api/barber-shop/update-profile``` - Requer Autenticação
+
+Painel de controle do BarberShop ```GET /barber-shop/dashboard``` - Requer Autenticação
 
 <hr>
 
-## Laravel API REST
-API REST - Sistema de Agendamento de Horários para Barbearias.
-Laravel
-MySQL
-PHPUnit
+##### Barber Endpoints
 
-### Endpoints
-##### User Endpoints:
-```POST /user/register - Registro de usuário```
+Listar todos os Barbers ```GET /barber```
 
-```POST /user/login - Login de usuário```
+Registra novo Barbers ```POST /barber``` - Requer Autenticação de BarberShop
 
-```GET /user/me - Obter dados do usuário logado```
+Obter informações de um Barber específico ```GET /barber/{barber}```
 
-```POST /user/refresh - Atualizar token de usuário```
+Atualiza um Barber ```PUT/PATCH /barber/{barber}``` - Requer Autenticação de BarberShop
 
-```POST /user/logout - Logout de usuário```
+Exclui um Barber ```DELETE /barber/{barber}``` - Requer Autenticação de BarberShop
 
-```GET /user/appointments - Obter os compromissos do usuário```
+<hr>
 
+##### Service Endpoints
 
-##### Barber Shop Endpoints:
+Listar todos os Services ```GET /service```
 
-```POST /barber-shop/register - Registro de estabelecimento de barbearia```
+Registra novo Services ```POST /service``` - Requer Autenticação de BarberShop
 
-```POST /barber-shop/login - Login de estabelecimento de barbearia```
+Obter informações de um Service específico ```GET /service/{service}```
 
-```GET /barber-shop/me - Obter dados do estabelecimento de barbearia logado```
+Atualiza um Service ```PUT/PATCH /service/{service}``` - Requer Autenticação de BarberShop
 
-```POST /barber-shop/refresh - Atualizar token do estabelecimento de barbearia```
+Exclui um Service ```DELETE /service/{service}``` - Requer Autenticação de BarberShop
 
-```POST /barber-shop/logout - Logout do estabelecimento de barbearia```
+<hr>
 
-```GET /barber-shop/dashboard - Painel de controle do estabelecimento de barbearia```
+##### Schedule Endpoints
 
+Listar todos os Schedules ```GET /schedule```
 
-##### Barber Endpoints:
+Registra novo Schedule ```POST /schedule``` - Requer Autenticação de BarberShop
 
-```POST /barber - Registra novo barbeiro```
+Obter informações de um Schedule específico ```GET /schedule/{schedule}```
 
-```PUT/PATCH /barber/{barber} - Atualiza um barbeiro (requer autenticação de estabelicimento de barbearia)```
+Atualiza um Schedule ```PUT/PATCH /schedule/{schedule}``` - Requer Autenticação de BarberShop
 
-```DELETE /barber/{barber} - Exclui um barbeiro```
+Exclui um Schedule ```DELETE /schedule/{schedule}``` - Requer Autenticação de BarberShop
 
-```GET /barber - Listar todos os barbeiros```
+<hr>
 
-```GET /barber/{barber} - Obter informações de um barbeiro específico```
+##### Appointment Endpoints
 
+Criar um novo Appointment ```POST /create-appointment``` - Requer Autenticação de User
 
-##### Service Endpoints:
+Obter informações de um compromisso específico ```GET /show-appointment/{appointment}``` - Requer Autenticação de User
 
-```POST /service - Registra novo serviço```
+<hr>
 
-```PUT/PATCH /service/{service} - Atualiza um serviço (requer autenticação de estabelicimento de barbearia)```
+##### Evaluate
+Listar um Evaluate específico ```GET api/evaluation/{evaluation}```
 
-```DELETE /service/{service} - Exclui um serviço```
+Criar um novo Evaluate ```POST api/appointment/{appointment}/evaluate``` - Requer Autenticação de User
 
-```GET /service - Listar todos os serviços```
+<hr>
 
-```GET /service/{service} - Obter informações de um serviço específico```
+##### Documentação Swagger (OpenAPI)
+```GET api/documentation```
 
+<hr>
 
-##### Schedule Endpoints:
+### Pré-requisitos
+* PHP 8.3
+* Laravel 11
+* Composer
+* Docker
 
-```POST /schedule - Registra novo Schedule```
+<hr>
 
-```PUT/PATCH /schedule/{schedule} - Atualiza um Schedule (requer autenticação de estabelicimento de barbearia)```
-
-```DELETE /schedule/{schedule} - Exclui um schedule```
-
-```GET /schedule - Listar todos os horários```
-
-```GET /schedule/{schedule} - Obter informações de um horário específico```
-
-
-##### Appointment Endpoints:
-
-```POST /create-appointment - Criar um novo compromisso (requer autenticação de usuário)```
-
-```GET /show-appointment/{appointment} - Obter informações de um compromisso específico (requer autenticação de usuário)```
-
-
-## Routes
-
+### Instalação
+1. Clone o repositório:
 ```
-Route::prefix('user')->group(function () {
-    Route::middleware('user.validate.register')->post('register', [UserRegisterController::class, 'register']);
-    Route::middleware('user.validate.login')->post('login', [UserController::class, 'login']);
-    Route::middleware('auth:api')->get('me', [UserController::class, 'me']);
-    Route::middleware('auth:api')->post('refresh', [UserController::class, 'refresh']);
-    Route::middleware('auth:api')->post('logout', [UserController::class, 'logout']);
-    Route::middleware('auth:api')->get('appointments', [UserController::class, 'userAppointments']);
-});
+git clone https://github.com/matheusmrqs4/barbershop-api
 ```
 
+2. Entre no diretório:
+ 
 ```
-Route::prefix('barber-shop')->group(function () {
-    Route::middleware('barbershop.validate.register')->post('register', [BarberShopRegisterController::class, 'register']);
-    Route::middleware('barbershop.validate.login')->post('login', [BarberShopController::class, 'login']);
-    Route::middleware('auth:barber_shop')->get('me', [BarberShopController::class, 'me']);
-    Route::middleware('auth:barber_shop')->post('refresh', [BarberShopController::class, 'refresh']);
-    Route::middleware('auth:barber_shop')->post('logout', [BarberShopController::class, 'logout']);
-    Route::middleware('auth:barber_shop')->get('dashboard', [DashboardController::class, 'index']);
-});
+cd your-repo
 ```
 
+3. Instale as dependências:
 ```
-Route::middleware('auth:barber_shop')->apiResource('barber', BarberController::class)->except(['index', 'show']);
-Route::get('barber', [BarberController::class, 'index']);
-Route::get('barber/{barber}', [BarberController::class, 'show']);
-```
-
-```
-Route::middleware('auth:barber_shop')->apiResource('service', ServiceController::class)->except(['index', 'show']);
-Route::get('service', [ServiceController::class, 'index']);
-Route::get('service/{service}', [ServiceController::class, 'show']);
+composer install
 ```
 
+4. Crie um arquivo .env e preencha os dados:
 ```
-Route::middleware('auth:barber_shop')->apiResource('schedule', ScheduleController::class)->except(['index', 'show']);
-Route::get('schedule', [ScheduleController::class, 'index']);
-Route::get('schedule/{schedule}', [ScheduleController::class, 'show']);
+cp .env.example .env
 ```
 
+5. Gere uma nova chave da aplicação:
 ```
-Route::middleware('auth:api')->post('create-appointment', [AppointmentController::class, 'createAppointment']);
-Route::middleware('auth:api')->get('show-appointment/{appointment}', [AppointmentController::class, 'showAppointment']);
+php artisan key:generate
+```
+
+6. Gere uma nova chave JWT:
+```
+php artisan jwt:secret  
+```
+
+7. Rode os Containers Docker:
+```
+docker-compose up -d --build
+```
+
+8. Acesse em:
+```
+http://127.0.0.1:8980/
 ```

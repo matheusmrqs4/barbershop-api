@@ -70,5 +70,6 @@ class Kernel extends HttpKernel
         'barbershop.validate.login' => \App\Http\Middleware\ValidateBarberShopLogin::class,
         'barbers.validate' => \App\Http\Middleware\ValidateBarber::class,
         'services.validate' => \App\Http\Middleware\ValidateService::class,
+        'evaluation.validate' => \App\Http\Middleware\ValidateEvaluation::class,
     ];
 }

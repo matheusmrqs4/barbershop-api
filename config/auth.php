@@ -72,12 +72,12 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => \App\Models\API\Auth\User\User::class,
         ],
 
         'barber_shop' => [
             'driver' => 'eloquent',
-            'model' => App\Models\BarberShop::class,
+            'model' => \App\Models\API\Auth\BarberShop\BarberShop::class,
         ],
 
         // 'users' => [

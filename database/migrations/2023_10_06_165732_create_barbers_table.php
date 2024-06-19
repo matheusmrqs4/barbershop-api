@@ -15,6 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
+            $table->string('social_media')->nullable();
+            $table->time('start_time');
+            $table->time('end_time');
             $table->timestamps();
             $table->unsignedBigInteger('barber_shops_id');
 
